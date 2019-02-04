@@ -19,13 +19,15 @@ public class LinkedListExample {
 		linkedList.add("ggg");
 		linkedList.add("eee");
 		linkedList.add("ddd");
-		Iterator<String> iter = linkedList.descendingIterator();
+		//Traversing the list using lambda expression
+		linkedList.forEach(list -> System.out.println(list));
 		
-		//listIterator interface is used to traverse a collection in both directions
-		System.out.println("Forward traversing");
-		while(iter.hasNext()){//forward traversing
-			System.out.println(iter.next());
-		}
+//		Iterator<String> iter = linkedList.descendingIterator();		
+//		//listIterator interface is used to traverse a collection in both directions
+//		System.out.println("Forward traversing");
+//		while(iter.hasNext()){//forward traversing
+//			System.out.println(iter.next());
+//		}
 		List<String> list = new ArrayList<String>();
 		list.add("aaa");
 		list.add("bbb");

@@ -19,7 +19,7 @@ public class LambdaSortExample {
 		empList.add(emp3);
 		empList.add(emp4);
 		
-		empList.sort((e1,e2) -> e1.getEmpId()- e2.getEmpId());
+		empList.sort((em1,em2) -> em1.getEmpId()- em2.getEmpId());
 		empList.forEach(emp -> System.out.println(emp.getName()));
 //		LambdaSortExample lambda = new LambdaSortExample();
 //		lambda.sortEmployeeByAddress(empList);

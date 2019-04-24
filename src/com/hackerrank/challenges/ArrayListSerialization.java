@@ -7,10 +7,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-/*Important points about Java ArrayList 
- *  class can contain duplicate elements.
+import java.util.List;
+
+/*
+    Important points about Java ArrayList 
+    class can contain duplicate elements.
 	class maintains insertion order.
  	class is non synchronized.
+ 	Synchronized list can be made by passing the list to Collections.synchronizedList(list);
 	Allows random access because array works at the index basis.
 	manipulation is slow because a lot of shifting needs to occur if any element is removed from the array list.
  */
@@ -19,9 +23,8 @@ public class ArrayListSerialization {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ProductBean pb1 = new ProductBean("P001","Pussay","don't know",0.45);
-		ProductBean pb2 = new ProductBean("P002","Pussay","don't know",0.55);
-		ProductBean pb3 = new ProductBean("P003","Pussay","don't know",0.65);
-		
+		ProductBean pb2 = new ProductBean("P002","Pussay","may be I know",0.55);
+		ProductBean pb3 = new ProductBean("P003","Pussay","Now I know",0.65);
 		try {
 			//serialization
 			FileOutputStream foos = new FileOutputStream("file");
@@ -34,14 +37,15 @@ public class ArrayListSerialization {
 			//desrialization
 			FileInputStream fis = new FileInputStream("file");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			ProductBean[] pBean = (ProductBean[])ois.readObject();
-//			for (ProductBean productBean : pBean) {
-//				System.out.println(productBean.getProdName());
-//				System.out.println(productBean.getProdPrice());
-//			}
-			System.out.println(pBean.length);
-			fis.close();
-			ois.close();
+			List<ProductBean> prodBeanList = new ArrayList<ProductBean>();
+			prodBeanList.add((ProductBean)ois.readObject());
+			prodBeanList.add((ProductBean)ois.readObject());
+			prodBeanList.add((ProductBean)ois.readObject());
+			for (ProductBean productBean : prodBeanList) {
+				System.out.println(productBean.toString());
+			}
+				fis.close();
+				ois.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

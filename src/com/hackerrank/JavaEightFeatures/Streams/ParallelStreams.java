@@ -44,7 +44,7 @@ public class ParallelStreams {
 			 By default parallelStream() creates threads equal to the number of processors available.
 			 */
 			List<Employee> empSalaryRaised = 
-			empList.parallelStream().filter(emp -> emp.getSalary() < 80000)
+			empList.parallelStream().filter(emp -> emp.getSalary() < 90000)
 									.sorted((emp1,emp2) -> emp1.getEmpFirstName().compareTo(emp2.getEmpFirstName()))
 									.map(emp -> {emp.setSalary(emp.getSalary()+1000); return emp;})
 									.collect(Collectors.toList());

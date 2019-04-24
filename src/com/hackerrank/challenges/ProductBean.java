@@ -7,6 +7,7 @@ public class ProductBean implements Serializable{
 	double prodPrice;
 	
 	public ProductBean(String prodId, String prodName, String prodCategory, double prodPrice){
+		this.prodId= prodId;
 		this.prodCategory = prodCategory;
 		this.prodName = prodName;
 		this.prodCategory = prodCategory;
@@ -37,4 +38,14 @@ public class ProductBean implements Serializable{
 	public void setProdPrice(double prodPrice) {
 		this.prodPrice = prodPrice;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ProductBean [prodId=" + prodId + ", prodName=" + prodName + ", prodCategory=" + prodCategory
+				+ ", prodPrice=" + prodPrice + "]";
+	}
+	
 }

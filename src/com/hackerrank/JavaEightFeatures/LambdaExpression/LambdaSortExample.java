@@ -19,17 +19,20 @@ public class LambdaSortExample {
 		empList.add(emp3);
 		empList.add(emp4);
 		
-		empList.sort((em1,em2) -> em1.getEmpId()- em2.getEmpId());
-		empList.forEach(emp -> System.out.println(emp.getName()));
-//		LambdaSortExample lambda = new LambdaSortExample();
-//		lambda.sortEmployeeByAddress(empList);
-//		
-//		Iterator<Employee> iter = empList.iterator();
-//		
-//		while(iter.hasNext()){
-//			System.out.println(iter.next().getAddress());
-//		}
-//		
+		empList.sort((em1,em2) -> em1.getEmpId() - em2.getEmpId());
+		empList.forEach(emp -> System.out.println("Name -- " + emp.getName()));
+		LambdaSortExample lambda = new LambdaSortExample();
+/*		System.out.println("Sort By Address");
+		lambda.sortEmployeeByAddress(empList);
+*/		System.out.println("Sort By Country");
+		lambda.sortEmployeeByCountry(empList);
+		empList.forEach(emp -> System.out.println("Address -- " + emp.getAddress()));
+		
+/*		Iterator<Employee> iter = empList.iterator();		
+		while(iter.hasNext()){
+			System.out.println(iter.next().getAddress());
+		}
+*/		
 	}
 	
 	public void sortEmployeeByAddress(List<Employee> empList){
@@ -42,6 +45,12 @@ public class LambdaSortExample {
 				return e1.getAddress().compareTo(e2.getAddress());
 			}
 		});
+		empList.sort(new Comparator<Employee> (){
+			@Override
+			public int compare(Employee e1, Employee e2){
+				return e1.getAddress().compareTo(e2.getAddress());
+			}
+		});
 	}
 	
 	public void sortEmployeeByCountry(List<Employee> empList){
@@ -50,13 +59,13 @@ public class LambdaSortExample {
 		 * Provide implementation logic for functional interfaces(interfaces with only one methods)
 		 * Syntax of lambda expression has three parts (argument) -> (body)
 		 */
-		empList.sort((Employee e1, Employee e2) -> 
+/*		empList.sort((Employee e1, Employee e2) -> 
 			e1.getAddress().compareTo(e2.getAddress()));
-		//Another way to write the above code block will be
-/*		Comparator<Employee> comparator = (Employee e1, Employee e2) -> 
+*/		//Another way to write the above code block will be
+		Comparator<Employee> comparator = (Employee e1, Employee e2) -> 
 				e1.getAddress().compareTo(e2.getAddress());
 		empList.sort(comparator);
-*/	
+	
 	
 	}
 	
